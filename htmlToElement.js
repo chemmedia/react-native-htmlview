@@ -49,7 +49,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
     return {...parentStyle, ...style};
   }
 
-  function domToElement(dom, parent) {
+  function domToElement(dom, parent, additionalTextStyle = {}) {
     if (!dom) return null;
 
     const renderNode = opts.customRenderer;
@@ -77,7 +77,7 @@ export default function htmlToElement(rawHtml, customOpts = {}, done) {
           <TextComponent
             {...opts.textComponentProps}
             key={index}
-            style={[defaultStyle, customStyle]}
+            style={[defaultStyle, customStyle, additionalTextStyle]}
           >
             {entities.decodeHTML(node.data)}
           </TextComponent>
